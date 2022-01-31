@@ -50,3 +50,17 @@ qqplot(ENVHEALTH,ECOSYSTEM)
 
 #exercise 2
 
+data_2010EPI <- read.csv('/Users/luoyuchen/Downloads/aEPI_data.csv')
+
+names(data_2010EPI) <- as.matrix(data_2010EPI[1, ])
+data_2010EPI <- data_2010EPI[-1, ]
+data_2010EPI[] <- lapply(data_2010EPI, function(x)
+  type.convert(as.character(x)))
+data_2010EPI
+
+View(data_2010EPI)
+attach(data_2010EPI)
+fix(data_2010EPI)
+EPI_E2 <- data_2010EPI$EPI
+EPI_Europe <- EPI_E2[data_2010EPI$EPI_regions == "Europe"]
+summary(EPI_Europe)
