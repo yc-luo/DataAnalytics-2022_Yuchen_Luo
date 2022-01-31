@@ -52,12 +52,13 @@ qqplot(ENVHEALTH,ECOSYSTEM)
 
 data_2010EPI <- read.csv('/Users/luoyuchen/Downloads/aEPI_data.csv')
 
+#remove the header
 names(data_2010EPI) <- as.matrix(data_2010EPI[1, ])
 data_2010EPI <- data_2010EPI[-1, ]
 data_2010EPI[] <- lapply(data_2010EPI, function(x)
   type.convert(as.character(x)))
 data_2010EPI
-
+#back to exercise 2
 View(data_2010EPI)
 attach(data_2010EPI)
 fix(data_2010EPI)
