@@ -7,3 +7,11 @@ diamonds2 <- diamonds %>% mutate(y = ifelse(y < 3 | y > 20, NA, y)) #ๆ3<x<20ไป
 ggplot(data = diamonds1, mapping = aes(x = x, y = y)) + geom_point()#display warning
 ggplot(data = diamonds2, mapping = aes(x = x, y = y)) + geom_point(na.rm = TRUE)# To suppress that warning
 #question: why there's a zero in x-value(zero size of the diamond)
+boxplot(diamonds1$carat,diamonds2$carat)
+
+nycflights13::flights %>% 
+mutate( cancelled = is.na(dep_time), 
+        sched_hour = sched_dep_time %/% 100, 
+        sched_min = sched_dep_time %% 100, 
+        sched_dep_time = sched_hour + sched_min / 60 ) %>% 
+ggplot(mapping = aes(sched_dep_time)) + geom_freqpoly( mapping = aes(color = cancelled), binwidth = 1/4 )
