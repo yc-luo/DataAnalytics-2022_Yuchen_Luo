@@ -13,3 +13,10 @@ EPI <- data_2010EPI$EPI
 tf <- is.na(EPI)
 E <- EPI[!tf]
 summary(EPI)
+hist(EPI)
+
+DALY <- data_2010EPI$DALY
+tf <- is.na(DALY)
+E <- DALY[!tf]
+summary(DALY)
+hist(DALY)
