@@ -1,6 +1,6 @@
 #lab2 part 1 assignment 2
 data_2010EPI <- read.csv('/Users/luoyuchen/Downloads/aEPI_data.csv')
-View(data_2010EPI)
+#View(data_2010EPI)
 attach(EPI_data)
 
 names(data_2010EPI) <- as.matrix(data_2010EPI[1, ])
@@ -10,14 +10,14 @@ data_2010EPI[] <- lapply(data_2010EPI, function(x)
 
 #EPI/DALY
 EPI <- data_2010EPI$EPI
-EPI<- na.omit(EPI)
+#EPI<- na.omit(EPI)
 tf <- is.na(EPI)
 E <- EPI[!tf]
 summary(EPI)
 hist(EPI)
 
 DALY <- data_2010EPI$DALY
-DALY<- na.omit(DALY)#删除na数值
+#DALY<- na.omit(DALY)#删除na数值
 tf <- is.na(DALY)
 E <- DALY[!tf]
 summary(DALY)
@@ -26,12 +26,12 @@ hist(DALY)
 #part 1b
 
 AIR_H <- data_2010EPI$AIR_H
-AIR_H<- na.omit(AIR_H)#删除na数值
+#AIR_H<- na.omit(AIR_H)#删除na数值
 tf <- is.na(AIR_H)
 E <- AIR_H[!tf]
 
 WATER_H <- data_2010EPI$WATER_H
-WATER_H<- na.omit(WATER_H)#删除na数值
+#WATER_H<- na.omit(WATER_H)#删除na数值
 tf <- is.na(WATER_H)
 E <- WATER_H[!tf]
 boxplot(ENVHEALTH,DALY,AIR_H,WATER_H)
@@ -45,5 +45,24 @@ AIR_HNEW<-c(seq(5,95,5))
 
 WATER_HNEW<-c(seq(5,95,5))
 NEW<- data.frame(DALYNEW,AIR_HNEW,WATER_HNEW)
-#pENV<- predict(lmENVH,NEW,interval="prediction")
-#cENV<-predict(lmENVH,NEW,interval="confidence")
+pENV<- predict(lmENVH,NEW,interval="prediction")
+pENV
+
+cENV<-predict(lmENVH,NEW,interval="confidence")
+cENV
+#repeat for 
+AIR_E <- data_2010EPI$AIR_E
+tf <- is.na(AIR_E)
+E <- AIR_E[!tf]
+eAIR<- lm(AIR_E~DALY+AIR_H+WATER_H)
+ceAIR<-coef(eAIR)
+peAIR<- predict(eAIR,NEW,interval="prediction")
+peAIR
+
+CLIMATE <- data_2010EPI$CLIMATE
+tf <- is.na(CLIMATE)
+E <- CLIMATE[!tf]
+eCLIMATE<- lm(CLIMATE~DALY+AIR_H+WATER_H)
+ceCLIMATE<-coef(eCLIMATE)
+peCLIMATE<- predict(eCLIMATE,NEW,interval="prediction")
+peCLIMATE
