@@ -1,0 +1,17 @@
+https://catalog.data.gov/no/dataset/electric-vehicle-population-data
+
+2 model
+1: linear regression to investigate the relationship between model Year and MSRP, model year and electric range (using heating map maybe) 根据independence 确定dependence 确定一个函数
+Model Year and price
+Model Year and Electric range (will make 2 subsets, Battery Electric Vehicle (BEV) and Plug-in Hybrid Electric Vehicle (PHEV))
+1.1 cor-test 测试是否有关联 (NULL hypothesis), it should come first, (histogram, box-plot, distribution of data)
+
+2: clustering (based on state, different region), K-means cluster
+visualization reference: https://www.datanovia.com/en/blog/k-means-clustering-visualization-in-r-step-by-step-guide/、
+
+2.1 
+Pure battery and hybrid, so 2 subsets will create. (Battery Electric Vehicle (BEV) and Plug-in Hybrid Electric Vehicle (PHEV))
+Range and price
+
+2.2 
+MSRP and different location(Zip code)
